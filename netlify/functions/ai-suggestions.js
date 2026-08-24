@@ -7,9 +7,9 @@
 // and is NEVER sent to or exposed in the browser.
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_MODEL = "llama-3.1-8b-instant";
+const GROQ_MODEL = "mixtral-8x7b-32768";
 
-export async function handler(event) {
+exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return respond(405, { error: "Method not allowed" });
   }
@@ -40,7 +40,7 @@ export async function handler(event) {
     console.error("ai-suggestions error:", err);
     return respond(502, { error: "Failed to get a response from the AI provider." });
   }
-}
+};
 
 async function rankTasks(tasks, apiKey) {
   const systemPrompt =
