@@ -7,7 +7,7 @@
 // and is NEVER sent to or exposed in the browser.
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_MODEL = "mixtral-8x7b-32768";
+const GROQ_MODEL = "openai/gpt-oss-120b";
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
