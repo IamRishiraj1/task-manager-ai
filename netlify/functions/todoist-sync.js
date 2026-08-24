@@ -3,7 +3,10 @@
 // Serverless proxy to the Todoist REST API (v2). TODOIST_API_TOKEN stays
 // on the server and is never exposed to the browser.
 
-const TODOIST_API = "https://api.todoist.com/rest/v2/tasks";
+const TODOIST_API = "https://api.todoist.com/api/v1/tasks";
+
+console.log("=== TODOIST FUNCTION VERSION 2 ===");
+console.log("Using endpoint:", TODOIST_API);
 
 export async function handler(event) {
   if (event.httpMethod !== "POST") {
@@ -43,11 +46,10 @@ async function upsertTask(task, token) {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     body: JSON.stringify({
-      content: task.title,
-      description: task.description || "",
-      due_date: task.dueDate || undefined
-    })
-  });
+  content: task.title,
+  description: task.description || "",
+  due_date: task.dueDate || undefined
+}),
 
   if (!response.ok) {
     const errText = await response.text();
