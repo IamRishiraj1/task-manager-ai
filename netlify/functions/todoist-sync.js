@@ -1,9 +1,13 @@
 // netlify/functions/todoist-sync.js
 //
-// Serverless proxy to the Todoist REST API (v2). TODOIST_API_TOKEN stays
-// on the server and is never exposed to the browser.
+// Serverless proxy to the Todoist API (v1, unified REST + Sync). TODOIST_API_TOKEN
+// stays on the server and is never exposed to the browser.
+//
+// Todoist merged their REST v2 and Sync v9 APIs into a single /api/v1/ surface
+// and shut down /rest/v2/ (it now returns 410 Gone). Request/response shape for
+// tasks is unchanged — only the base URL moved.
 
-const TODOIST_API = "https://api.todoist.com/rest/v2/tasks";
+const TODOIST_API = "https://api.todoist.com/api/v1/tasks";
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
