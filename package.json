@@ -1,0 +1,25 @@
+{
+  "name": "task-manager-ai",
+  "version": "1.0.0",
+  "description": "A full-stack task manager with AI-powered prioritization suggestions, deadline reminders, and Todoist deadline syncing. Built with React, React Router, and Netlify Functions.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "functions:serve": "netlify dev"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.6"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
